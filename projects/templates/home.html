@@ -1,6 +1,7 @@
 {%extends 'base.html'%}
 {% load bootstrap3 %}
 {%load static%}
+{% block content %}
 {{ block.super}}
 <!-- project section -->
 <div class="container-fluid">
@@ -8,9 +9,7 @@
         <h4 class="display-35 font-weight-bold"> Sites of the day</h4>:
     </div>
     <div class="row">
-
         {% for project_item in projects %}
-
         <div class="col-md-4">
             <div class="card-deck">
                 <div class="card mb-2 mt-2 ">
@@ -28,7 +27,6 @@
                         </a>
                         {% endif %}
                     </div>
-
                     <div class="card-body pr-2 pl-2 pr-2 mr-2">
                         <h5 class="card-title ml-4">{{ project_item.project_title }}</h5>
                         <div class="row ml-2">
@@ -40,12 +38,17 @@
                                 </small> </div>
                             <div class="col-lg-6 dark-text d-flex justify-content-end"> <small>
                                     {{project_item.pub_date|date:"d /m/Y"}} </small></div>
-
                         </div>
                     </div>
                 </div>
-
             </div>
             <!-- end of card deck  -->
         </div>
         {% endfor %}
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+{{ block.super }}
+<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+{% endblock %}

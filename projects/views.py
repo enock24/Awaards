@@ -40,9 +40,9 @@ def new_project(request):
     if request.method == 'POST':
         form = NewProjectForm(request.POST, request.FILES)
         if form.is_valid():
-            project = form.save(commit=False)
-            project.author = current_user
-            project.save()
+            form = form.save(commit=False)
+            form.author = current_user
+            form.save()
         return redirect('index')
 
     else:
